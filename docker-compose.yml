@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: url_shortener_db
+    image: postgres:10.3-alpine
+    environment:
+      POSTGRES_USER: shorturl
+      POSTGRES_PASSWORD: shorturl
+      POSTGRES_DB: shorturl
+    volumes:
+       - ~/storage/shorturl/postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - shorturl
+    restart: always
+
+networks:
+  shorturl:
+    driver: bridge

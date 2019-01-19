@@ -1,0 +1,36 @@
+server:
+  contextPath: /url-shortener
+  port: 8081
+    
+spring:
+  application:
+    name: url-shortener
+  profiles.active: local
+  jpa:
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+
+---
+spring: 
+  profiles: local    
+  datasource:
+    driver: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/shorturl
+    username: shorturl
+    password: shorturl    
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate.ddl-auto: none
+ 
+---
+spring:
+  profiles: tests
+  datasource:
+    driver: org.h2.Driver
+    url: jdbc:h2:mem:test;INIT=CREATE SCHEMA IF NOT EXISTS shorturl
+    username: sa
+    password:
+  jpa:
+    database: h2
+    show-sql: true
+    hibernate.ddl-auto: create

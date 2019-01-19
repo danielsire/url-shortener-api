@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: danielsire
+      changes:
+        - createTable:
+            tableName: url
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: original
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: hash
+                  type: varchar(8)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: log
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: accessed
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: accessed_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false                   
