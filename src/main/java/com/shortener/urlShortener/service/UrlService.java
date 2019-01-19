@@ -35,17 +35,12 @@ public class UrlService {
 	public String getShortenedUrl(String originalUrl) {
 		if (StringUtils.hasText(originalUrl)) {
 			String hash = uniqueHash.getAlphanumericHash();
-			if (saveUrl(originalUrl, hash)) {
-				return getShortUrl(hash);
-			}			
+
+			repository.save(new Url(originalUrl, hash));
+			
+			return getShortUrl(hash);
 		}
 		return "";
-	}
-
-	private Boolean saveUrl(String originalUrl, String hash) {
-		Url url = new Url(originalUrl, hash);
-		
-		return repository.save(url) != null;
 	}
 	
 	private String getShortUrl(String hash) {
@@ -55,7 +50,5 @@ public class UrlService {
 		
 		return shortUri.toString();
 	}
-	
-	
 	
 }

@@ -20,6 +20,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<commons-text.version>1.6</commons-text.version>
+		<fixture.factory.version>3.1.0</fixture.factory.version>
 	</properties>
 
 	<dependencies>
@@ -63,6 +64,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>br.com.six2six</groupId>
+			<artifactId>fixture-factory</artifactId>
+			<version>${fixture.factory.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

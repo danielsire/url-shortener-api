@@ -3,7 +3,6 @@ package com.shortener.urlShortener.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.shortener.urlShortener.model.Log;
@@ -25,14 +24,5 @@ public class LogService {
 		Log log = new Log(accessed);
 		
 		return repository.save(log);
-	}
-	
-	public List<Log> getAllLogs() {
-		return repository.findAll(sortByWhenDesc());
-	}
-	
-	private Sort sortByWhenDesc() {
-        return new Sort(Sort.Direction.DESC, "when");
-    }
-	
+	}	
 }
