@@ -20,6 +20,6 @@ Run `docker run -p 8081:8081 url-shortener-chalenge`
 
 Tomcat will start on port *8081*
 
-### Swaggers
+### Swagger
 
 Access `http://localhost:8081/v2/api-docs`
