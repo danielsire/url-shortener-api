@@ -1,5 +1,3 @@
-[![Coverage Status](https://coveralls.io/repos/github/danielsire/url-shortener-api/badge.svg?branch=master)](https://coveralls.io/github/danielsire/url-shortener-api?branch=master)
-
 # URL-Shortener challenge
 
 Run `docker-compose up` to create PostgreSQL databases
