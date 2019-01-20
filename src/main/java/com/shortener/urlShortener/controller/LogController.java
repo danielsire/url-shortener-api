@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shortener.urlShortener.model.Statistics;
 import com.shortener.urlShortener.service.LogService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 public class LogController {
 	
@@ -19,6 +21,7 @@ public class LogController {
 	private LogService logService;
 	
 	@GetMapping(value="/statistics", produces= MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value="List the statistics from the most accessed URLs")
 	public ResponseEntity<List<Statistics>> getStatistics() {
 			List<Statistics> statistics = logService.getStatistics();
 			

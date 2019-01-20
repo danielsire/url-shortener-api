@@ -15,6 +15,9 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.shortener.urlShortener.service.LogService;
 import com.shortener.urlShortener.service.UrlService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 @RestController
 public class UrlController {
 
@@ -25,12 +28,14 @@ public class UrlController {
 	private LogService logService;
 
 	@GetMapping(value = "/", produces = MediaType.TEXT_PLAIN_VALUE)
+	@ApiOperation(value="Show welcome page")
 	public ResponseEntity<String> showWelcome() {
 		String welcome = "Welcome to URL Shotener";
 		return ResponseEntity.status(HttpStatus.OK).body(welcome);
 	}
 	
 	@GetMapping(value = "/fail", produces = MediaType.TEXT_PLAIN_VALUE)
+	@ApiOperation(value="Show fail message when is not possible to redirect")
 	public ResponseEntity<String> showError() {
 		String error = "Was not possible to Redirect this URL";
 
@@ -38,7 +43,10 @@ public class UrlController {
 	}
 	
 	@PostMapping(value = "/shortener", produces = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> getShortened(@RequestBody final String original) {
+	@ApiOperation(value="Return a short version of the URL to the User")
+	public ResponseEntity<String> getShortened(
+			@ApiParam(value = "Original URL", required = true)
+			@RequestBody final String original) {
 		String shortenedUrl = urlService.getShortenedUrl(original);
 
 		return ResponseEntity.status(HttpStatus.OK).body(shortenedUrl);
@@ -59,7 +67,10 @@ public class UrlController {
 	 */
 
 	@GetMapping("/{hash}")
-	public RedirectView redirect(@PathVariable(name = "hash") final String hash) {
+	@ApiOperation(value="Redirect user to original URL given a hash")
+	public RedirectView redirect(
+			@ApiParam(value = "Hash URL", required = true)
+			@PathVariable(name = "hash") final String hash) {
 		String originalUrl = urlService.getOriginalUrl(hash);
 
 		if (StringUtils.hasText(originalUrl)) {
