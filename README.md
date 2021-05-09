@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/danielsire/url-shortener-api.svg?branch=master)](https://travis-ci.org/danielsire/url-shortener-api)
+
 # URL-Shortener challenge
 
 Run `docker-compose up` to create PostgreSQL databases
