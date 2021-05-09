@@ -3,4 +3,4 @@ dist: xenial
 language: java
 # use Java 8
 jdk:
-- oraclejdk8
+- openjdk8
